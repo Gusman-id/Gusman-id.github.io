@@ -243,3 +243,28 @@ nav{
   }
 
 }
+/* TYPING TEXT */
+
+.typing-text{
+  color:#FFBA09;
+  border-right:4px solid #FFBA09;
+  padding-right:5px;
+
+  animation:blink .7s infinite;
+}
+
+@keyframes blink{
+
+  0%{
+    border-color:#FFBA09;
+  }
+
+  50%{
+    border-color:transparent;
+  }
+
+  100%{
+    border-color:#FFBA09;
+  }
+
+}
