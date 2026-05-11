@@ -12,7 +12,10 @@
   <!-- HERO -->
   <header class="hero">
     <div class="container">
-      <h1>Gusman</h1>
+     <h1>
+  Halo, Saya 
+  <span class="typing-text"></span>
+</h1>
       <p class="subtitle">
         Accounting Graduate • Surveyor • Data & Finance Enthusiast
       </p>
@@ -154,5 +157,28 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+
+const text = "Gusman";
+
+let index = 0;
+
+function typeEffect(){
+
+  if(index < text.length){
+
+    document.querySelector(".typing-text").innerHTML += text.charAt(index);
+
+    index++;
+
+    setTimeout(typeEffect, 180);
+
+  }
+
+}
+
+typeEffect();
+
+</script>
 </body>
 </html>
