@@ -7,22 +7,24 @@
     <style>
         /* CSS UTAMA */
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #faf6f0; color: #4a4a4a; margin: 0; padding: 0; text-align: center; overflow: hidden; }
-        .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; position: relative; padding-bottom: 60px; }
+        .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; min-height: 100dvh; position: relative; padding-bottom: 60px; }
         
         /* 1. HALAMAN COVER (SAMPUL AWAL) */
-        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
+        /* Perbaikan: Menggunakan 100dvh agar dinamis mengikuti tinggi browser HP yang terpotong bar */
+        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; height: 100dvh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
         
-        /* KOTAK HITAM TRANSPARAN (DIPOSISIKAN PERSIS DI ATAS TOMBOL) */
-        .cover-box { background: rgba(0, 0, 0, 0.55); padding: 30px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(4px); color: white; border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; margin-bottom: 95px; /* Jarak pas agar tidak tertimpa tombol bawah */ text-align: left; }
+        /* KOTAK HITAM TRANSPARAN */
+        .cover-box { background: rgba(0, 0, 0, 0.55); padding: 25px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(4px); color: white; border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; margin-bottom: 110px; /* Ditambah agar kotak hitam naik sedikit menjauhi tombol bawah */ text-align: left; }
         .cover-box h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-weight: 400; color: #e0d5c1; text-align: center; }
         .cover-box h1 { font-size: 32px; font-family: 'Georgia', serif; margin: 10px 0; text-align: center; font-style: italic; }
         .cover-box .line { height: 1px; background: rgba(255,255,255,0.2); margin: 15px 0; }
         .tamu-info { display: flex; justify-content: space-between; font-size: 12px; line-height: 1.5; }
         
-        /* BAR PUTIH PANJANG DI BAGIAN PALING BAWAH LAYAR HP (PERSIS SEPERTI CONTOH) */
-        .btn-buka-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; padding: 15px 0; border-top: 1px solid #e5e7eb; box-sizing: border-box; display: flex; justify-content: center; align-items: center; }
+        /* BAR PUTIH DI BAGIAN BAWAH LAYAR HP */
+        /* Perbaikan: Menggunakan bottom: env() untuk menghindari notch/home indicator pada HP modern */
+        .btn-buka-bar { position: absolute; bottom: 0; bottom: env(safe-area-inset-bottom); left: 0; width: 100%; background: #ffffff; padding: 18px 0; border-top: 1px solid #e5e7eb; box-sizing: border-box; display: flex; justify-content: center; align-items: center; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
         
-        /* TOMBOL BUKA UNDANGAN DI DALAM BAR */
+        /* TOMBOL BUKA UNDANGAN */
         .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #111111; border: none; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; width: 100%; }
 
         /* CONTENT UTAMA (TERSEMBUNYI DI AWAL) */
@@ -97,7 +99,7 @@
 
         function bukaUndangan() {
             const cover = document.getElementById("coverPage");
-            cover.style.transform = "translateY(-100vh)";
+            cover.style.transform = "translateY(-100dvh)"; // Diupdate ke 100dvh
             
             document.getElementById("mainContent").style.display = "block";
             musicBtn.style.display = "block";
