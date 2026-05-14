@@ -10,16 +10,17 @@
         .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; position: relative; padding-bottom: 60px; }
         
         /* 1. HALAMAN COVER (SAMPUL AWAL) */
-        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
+        /* Perubahan: menggunakan flex-end agar konten otomatis merapat ke bawah layar */
+        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
         
-        /* KOTAK HITAM DIUBAH AGAR TOMBOL MASUK KE DALAM */
-        .cover-box { background: rgba(0, 0, 0, 0.75); padding: 30px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(5px); color: white; border: 1px solid rgba(255,255,255,0.15); box-sizing: border-box; }
+        /* Perubahan: Ditambahkan margin-bottom agar posisi kotak berada pas di area bawah layar HP */
+        .cover-box { background: rgba(0, 0, 0, 0.75); padding: 30px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(5px); color: white; border: 1px solid rgba(255,255,255,0.15); box-sizing: border-box; margin-bottom: 60px; }
         .cover-box h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-weight: 400; color: #e0d5c1; }
         .cover-box h1 { font-size: 30px; font-family: 'Georgia', serif; margin: 10px 0; }
         .cover-box .line { height: 1px; background: rgba(255,255,255,0.2); margin: 15px 0; }
         .tamu-info { display: flex; justify-content: space-between; text-align: left; font-size: 12px; margin-bottom: 25px; line-height: 1.5; }
         
-        /* TOMBOL SEKARANG BERADA DI DALAM KOTAK HITAM AGAR AMAN */
+        /* TOMBOL BUKA UNDANGAN */
         .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: #ffffff; color: #111111; border: none; padding: 12px 0; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-decoration: none; }
         .btn-buka:hover { background: #e5e5e5; }
 
@@ -48,7 +49,6 @@
                 <div>Kepada Yth.<br><strong>Bpk/Ibu/Saudara/i</strong></div>
                 <div style="text-align: right;">Tamu Undangan<br><strong>di Tempat</strong></div>
             </div>
-            <!-- TOMBOL DIUPDATE MASUK KE DALAM KOTAK -->
             <button class="btn-buka" onclick="bukaUndangan()">📩 Buka Undangan</button>
         </div>
     </div>
