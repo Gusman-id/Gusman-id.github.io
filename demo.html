@@ -10,19 +10,20 @@
         .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; position: relative; padding-bottom: 60px; }
         
         /* 1. HALAMAN COVER (SAMPUL AWAL) */
-        /* Perubahan: menggunakan flex-end agar konten otomatis merapat ke bawah layar */
-        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
+        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
         
-        /* Perubahan: Ditambahkan margin-bottom agar posisi kotak berada pas di area bawah layar HP */
-        .cover-box { background: rgba(0, 0, 0, 0.75); padding: 30px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(5px); color: white; border: 1px solid rgba(255,255,255,0.15); box-sizing: border-box; margin-bottom: 60px; }
-        .cover-box h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-weight: 400; color: #e0d5c1; }
-        .cover-box h1 { font-size: 30px; font-family: 'Georgia', serif; margin: 10px 0; }
+        /* KOTAK HITAM TRANSPARAN (DIPOSISIKAN PERSIS DI ATAS TOMBOL) */
+        .cover-box { background: rgba(0, 0, 0, 0.55); padding: 30px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(4px); color: white; border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; margin-bottom: 95px; /* Jarak pas agar tidak tertimpa tombol bawah */ text-align: left; }
+        .cover-box h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-weight: 400; color: #e0d5c1; text-align: center; }
+        .cover-box h1 { font-size: 32px; font-family: 'Georgia', serif; margin: 10px 0; text-align: center; font-style: italic; }
         .cover-box .line { height: 1px; background: rgba(255,255,255,0.2); margin: 15px 0; }
-        .tamu-info { display: flex; justify-content: space-between; text-align: left; font-size: 12px; margin-bottom: 25px; line-height: 1.5; }
+        .tamu-info { display: flex; justify-content: space-between; font-size: 12px; line-height: 1.5; }
         
-        /* TOMBOL BUKA UNDANGAN */
-        .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: #ffffff; color: #111111; border: none; padding: 12px 0; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-decoration: none; }
-        .btn-buka:hover { background: #e5e5e5; }
+        /* BAR PUTIH PANJANG DI BAGIAN PALING BAWAH LAYAR HP (PERSIS SEPERTI CONTOH) */
+        .btn-buka-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; padding: 15px 0; border-top: 1px solid #e5e7eb; box-sizing: border-box; display: flex; justify-content: center; align-items: center; }
+        
+        /* TOMBOL BUKA UNDANGAN DI DALAM BAR */
+        .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #111111; border: none; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; width: 100%; }
 
         /* CONTENT UTAMA (TERSEMBUNYI DI AWAL) */
         .main-content { display: none; }
@@ -39,7 +40,7 @@
 </head>
 <body>
 
-    <!-- 1. HALAMAN COVER (SAMPUL DEPAN) -->
+    <!-- 1. HALAMAN COVER -->
     <div class="cover-overlay" id="coverPage">
         <div class="cover-box">
             <h3>The Wedding Of</h3>
@@ -49,6 +50,10 @@
                 <div>Kepada Yth.<br><strong>Bpk/Ibu/Saudara/i</strong></div>
                 <div style="text-align: right;">Tamu Undangan<br><strong>di Tempat</strong></div>
             </div>
+        </div>
+        
+        <!-- BAR PUTIH DI BAGIAN BAWAH -->
+        <div class="btn-buka-bar">
             <button class="btn-buka" onclick="bukaUndangan()">📩 Buka Undangan</button>
         </div>
     </div>
@@ -59,7 +64,7 @@
         <source src="https://soundhelix.com" type="audio/mpeg">
     </audio>
 
-    <!-- 2. ISI UTAMA UNDANGAN (MUNCUL SETELAH DIKLIK) -->
+    <!-- 2. ISI UTAMA UNDANGAN -->
     <div class="container main-content" id="mainContent">
         <section style="padding-top: 40px;">
             <h2>Selamat Datang</h2>
@@ -86,7 +91,6 @@
         </section>
     </div>
 
-    <!-- SCRIPT LOGIKA KONTROL -->
     <script>
         const music = document.getElementById("bgMusic");
         const musicBtn = document.getElementById("musicBtn");
