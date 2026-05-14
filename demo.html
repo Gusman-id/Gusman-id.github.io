@@ -3,53 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan: Fulan & Fulannah</title>
+    <title>Undangan Pernikahan Tema Jawa-01</title>
     <style>
-        /* CSS UTAMA & RESET */
+        /* CSS RESET & CORE FORMATTING */
         html { scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #faf6f0; color: #4a4a4a; margin: 0; padding: 0; text-align: center; overflow: hidden; }
+        body { font-family: 'Times New Roman', Times, Georgia, serif; background-color: #1f140b; color: #f5eedc; margin: 0; padding: 0; text-align: center; overflow: hidden; }
         
-        .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; position: relative; padding-bottom: 80px; box-sizing: border-box; }
+        .container { max-width: 450px; background: #2c1d11; margin: 0 auto; box-shadow: 0 0 30px rgba(0,0,0,0.7); min-height: 100vh; position: relative; padding-bottom: 90px; box-sizing: border-box; }
         
-        /* 1. HALAMAN COVER (SAMPUL AWAL) */
-        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; height: 100dvh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
-        .cover-box { background: rgba(0, 0, 0, 0.55); padding: 25px 20px; border-radius: 15px; width: 85%; backdrop-filter: blur(4px); color: white; border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; margin-bottom: 110px; text-align: left; }
-        .cover-box h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-weight: 400; color: #e0d5c1; text-align: center; }
-        .cover-box h1 { font-size: 32px; font-family: 'Georgia', serif; margin: 10px 0; text-align: center; font-style: italic; }
-        .cover-box .line { height: 1px; background: rgba(255,255,255,0.2); margin: 15px 0; }
-        .tamu-info { display: flex; justify-content: space-between; font-size: 12px; line-height: 1.5; }
+        /* 1. HALAMAN COVER (SAMPUL DEPAN) */
+        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; height: 100dvh; background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
         
-        /* BAR PUTIH DI BAGIAN BAWAH COVER */
-        .btn-buka-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; padding: 18px 0; border-top: 1px solid #e5e7eb; box-sizing: border-box; display: flex; justify-content: center; align-items: center; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
-        .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #111111; border: none; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; width: 100%; }
+        /* KOTAK DEKORATIF JAWA TRANSPARAN */
+        .cover-box { background: rgba(27, 18, 10, 0.85); padding: 30px 20px; border-radius: 4px; width: 85%; backdrop-filter: blur(5px); color: #f5eedc; border: 1px solid rgba(196, 154, 69, 0.4); box-sizing: border-box; margin-bottom: 110px; text-align: left; position: relative; }
+        .cover-box h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 10px 0; font-weight: normal; color: #c49a45; text-align: center; font-family: 'Segoe UI', Arial, sans-serif; }
+        .cover-box h1 { font-size: 34px; font-weight: normal; margin: 15px 0; text-align: center; font-style: italic; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .cover-box .line { height: 1px; background: linear-gradient(to right, transparent, #c49a45, transparent); margin: 20px 0; }
+        .tamu-info { display: flex; justify-content: space-between; font-size: 13px; line-height: 1.6; font-family: 'Segoe UI', Arial, sans-serif; }
+        
+        /* BAR TOMBOL BUKA UNDANGAN (MELEKAT DI BAWAH LAYAR) */
+        .btn-buka-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; padding: 18px 0; border-top: 1px solid #c49a45; box-sizing: border-box; display: flex; justify-content: center; align-items: center; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+        .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: #111111; border: none; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; width: 100%; letter-spacing: 1px; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        /* 2. CONTENT UTAMA */
+        /* 2. CONTENT UTAMA UNDANGAN */
         .main-content { display: none; }
-        .page-section { padding: 80px 25px 60px 25px; box-sizing: border-box; border-bottom: 1px dashed #e0d5c1; position: relative; }
         
-        #home { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; height: 100vh; height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-        #home h1 { font-family: 'Georgia', serif; font-size: 40px; margin: 10px 0; font-style: italic; }
+        /* SEKSI HALAMAN BERUNTUN KE BAWAH */
+        .page-section { padding: 80px 25px 60px 25px; box-sizing: border-box; border-bottom: 1px dashed rgba(196, 154, 69, 0.3); position: relative; }
+        
+        /* HALAMAN UTAMA (HERO SECTION KHUSUS) */
+        #home-sec-wrapper { background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://picsum.photos') no-repeat center/cover; height: 100vh; height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+        #home-sec-wrapper h1 { font-size: 44px; margin: 15px 0; font-style: italic; font-weight: normal; color: #ffffff; }
+        
+        /* STRUKTUR ORNAMEN BINGKAI GARIS EMAS KHUSUS TEMA JAWA */
         .border-frame { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 1px solid rgba(196, 154, 69, 0.5); pointer-events: none; }
+        .corner-decor { position: absolute; width: 15px; height: 15px; border: 2px solid #c49a45; pointer-events: none; }
+        .top-left { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+        .top-right { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 15px; left: 15px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+        h2 { font-size: 28px; font-weight: normal; color: #c49a45; margin-bottom: 30px; margin-top: 0; font-style: italic; }
+        .mempelai-box { margin: 35px 0; }
+        .mempelai-nama { font-size: 26px; font-weight: bold; color: #ffffff; margin-bottom: 5px; }
         
-        h2 { font-size: 26px; font-family: 'Georgia', serif; color: #c49a45; margin-bottom: 25px; mt: 0; }
-        .mempelai-box { margin: 30px 0; }
-        .mempelai-nama { font-size: 24px; font-weight: bold; color: #333; margin-bottom: 5px; }
-        
-        /* 3. MENU NAVIGASI BAWAH */
-        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; background: #2c1d11; border-top: 3px solid #c49a45; border-radius: 20px 20px 0 0; display: flex; justify-content: space-around; padding: 10px 0; padding-bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.3); }
-        .nav-item { background: none; border: none; color: #a88a64; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; text-decoration: none; transition: 0.2s; }
-        .nav-item .icon { font-size: 18px; }
+        /* 3. BOTTOM NAVIGATION BAR (COKELAT EMAS MATTE) */
+        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; background: #1b120a; border-top: 2px solid #c49a45; border-radius: 16px 16px 0 0; display: flex; justify-content: space-around; padding: 12px 0; padding-bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 999; box-shadow: 0 -8px 20px rgba(0,0,0,0.5); }
+        .nav-item { background: none; border: none; color: #a88a64; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; flex: 1; text-decoration: none; font-family: 'Segoe UI', Arial, sans-serif; transition: 0.2s; }
+        .nav-item .icon { font-size: 16px; margin-bottom: 2px; }
         .nav-item.active { color: #ffffff; font-weight: bold; }
 
-        /* 4. TOMBOL MUSIK FLOATING */
-        .music-btn { position: fixed; bottom: 95px; right: 20px; background: rgba(44, 29, 17, 0.9); border: 1px solid #c49a45; color: #c49a45; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+        /* 4. FLOATING AUDIO CONTROL BUTTON */
+        .music-btn { position: fixed; bottom: 100px; right: 20px; background: rgba(27, 18, 10, 0.9); border: 1px solid #c49a45; color: #c49a45; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
     </style>
 </head>
 <body>
 
-    <!-- 1. HALAMAN COVER -->
+    <!-- 1. SAKELAR COVER DEPAN -->
     <div class="cover-overlay" id="coverPage">
         <div class="cover-box">
+            <!-- Ornamen Bingkai Kotak -->
+            <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
+            <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
+            
             <h3>The Wedding Of</h3>
             <h1>Fulan & Fulannah</h1>
             <div class="line"></div>
@@ -58,65 +74,72 @@
                 <div style="text-align: right;">Tamu Undangan<br><strong>di Tempat</strong></div>
             </div>
         </div>
+        
+        <!-- BAR PUTIH BAWAH SANG MEMPELAI STYLE -->
         <div class="btn-buka-bar">
             <button class="btn-buka" onclick="bukaUndangan()">📩 Buka Undangan</button>
         </div>
     </div>
 
-    <!-- ELEMEN AUDIO DENGAN TAUTAN SECURE HTTPS PERNIKAHAN -->
+    <!-- ELEMEN SISTEM MUSIK (LOKAL REPOSITORY) -->
     <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔊</button>
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://mixkit.co" type="audio/mpeg">
+        <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 2. KONTEN UTAMA UNDANGAN -->
+    <!-- 2. PANIL UTAMA UNDANGAN (SCROLLABLE) -->
     <div class="container main-content" id="mainContent">
 
+        <!-- NAV 1: HOME SECTION -->
         <div id="home-sec" class="page-section" style="padding: 0;">
-            <div id="home">
+            <div id="home-sec-wrapper">
                 <div class="border-frame"></div>
-                <p style="letter-spacing: 2px; font-size: 12px; text-transform: uppercase; margin: 0;">The Wedding Of</p>
+                <p style="letter-spacing: 3px; font-size: 12px; text-transform: uppercase; margin: 0; color: #c49a45; font-family: 'Segoe UI';">The Wedding Of</p>
                 <h1>Fulan & Fulannah</h1>
-                <p style="font-size: 14px; font-style: italic; opacity: 0.9;">Kamis, 18 Juni 2026</p>
+                <p style="font-size: 16px; font-style: italic; color: #f5eedc;">Kamis, 18 Juni 2026</p>
             </div>
         </div>
 
+        <!-- NAV 2: PROFIL SECTION -->
         <div id="profil-sec" class="page-section">
             <h2>Mempelai Pernikahan</h2>
             <div class="mempelai-box">
                 <div class="mempelai-nama">Fulan, S.T.</div>
-                <p style="margin: 0; color: #666;">Putra dari Bpk. A & Ibu B</p>
+                <p style="margin: 0; color: #a88a64; font-family: 'Segoe UI'; font-size: 14px;">Putra dari Bpk. A & Ibu B</p>
             </div>
-            <div style="font-size: 28px; color: #c49a45; font-family: Georgia; margin: 20px 0;">&</div>
+            <div style="font-size: 28px; color: #c49a45; margin: 20px 0;">&</div>
             <div class="mempelai-box">
                 <div class="mempelai-nama">Fulannah, S.E.</div>
-                <p style="margin: 0; color: #666;">Putri dari Bpk. C & Ibu D</p>
+                <p style="margin: 0; color: #a88a64; font-family: 'Segoe UI'; font-size: 14px;">Putri dari Bpk. C & Ibu D</p>
             </div>
         </div>
 
+        <!-- NAV 3: ACARA SECTION -->
         <div id="acara-sec" class="page-section">
             <h2>Agenda Acara</h2>
-            <p><strong>Kamis, 18 Juni 2026</strong></p>
-            <p style="font-size: 15px;">⏰ 08:00 WIB - Selesai</p>
-            <p style="font-size: 15px;">📍 Gedung Pertemuan Mulia</p>
+            <p style="font-size: 18px; color: #ffffff;"><strong>Kamis, 18 Juni 2026</strong></p>
+            <p style="font-size: 15px; font-family: 'Segoe UI';">⏰ 08:00 WIB - Selesai</p>
+            <p style="font-size: 15px; font-family: 'Segoe UI';">📍 Gedung Pertemuan Mulia</p>
         </div>
 
+        <!-- NAV 4: GALERI SECTION -->
         <div id="galeri-sec" class="page-section">
             <h2>Galeri Foto</h2>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                <img src="https://picsum.photos" style="width: 100%; border-radius: 8px;">
-                <img src="https://picsum.photos" style="width: 100%; border-radius: 8px;">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                <img src="https://picsum.photos" style="width: 100%; border-radius: 4px; border: 1px solid #c49a45;">
+                <img src="https://picsum.photos" style="width: 100%; border-radius: 4px; border: 1px solid #c49a45;">
             </div>
         </div>
 
+        <!-- NAV 5: UCAPAN SECTION -->
         <div id="ucapan-sec" class="page-section">
             <h2>Buku Tamu & Ucapan</h2>
-            <div style="background: #fdfbf7; border: 1px dashed #c49a45; padding: 30px 20px; border-radius: 8px; color: #999; font-size: 14px;">
-                [ Area Kolom Komentar ]
+            <div style="background: rgba(27,18,10,0.5); border: 1px dashed #c49a45; padding: 30px 20px; border-radius: 4px; color: #a88a64; font-size: 14px; font-family: 'Segoe UI';">
+                [ Kolom Komentar Tamu ]
             </div>
         </div>
 
-        <!-- MENU NAVIGASI BAWAH -->
+        <!-- BOTTOM NAV BAR COKELAT EMAS JAWA -->
         <nav class="bottom-nav">
             <button class="nav-item active" onclick="scrollToSection('home-sec', this)">
                 <span class="icon">🏠</span><span>Home</span>
@@ -136,7 +159,7 @@
         </nav>
     </div>
 
-    <!-- SCRIPT LOGIKA PERBAIKAN AUDIO -->
+    <!-- LOGIKA SISTEM JAVASCRIPT -->
     <script>
         const music = document.getElementById("bgMusic");
         const musicBtn = document.getElementById("musicBtn");
@@ -145,31 +168,28 @@
             document.getElementById("coverPage").style.transform = "translateY(-100dvh)";
             document.getElementById("mainContent").style.display = "block";
             musicBtn.style.display = "flex";
+            
+            // Lepas kunci scroll untuk pergerakan memanjang bebas ke bawah
             document.body.style.overflow = "auto";
             document.body.style.overflowX = "hidden";
             
-            // Perbaikan Force Play: Memastikan audio terpicu langsung pasca klik
+            // Pemicu putar musik dari folder lokal repository GitHub Anda
             music.muted = false;
             let playPromise = music.play();
             
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
                     musicBtn.innerText = "🔊";
-                }).catch(error => {
-                    console.log("Autoplay diblokir browser, menunggu interaksi tombol musik.");
+                }).catch(e => {
+                    console.log("Autoplay ditahan browser.");
                     musicBtn.innerText = "🔇";
                 });
             }
         }
 
         function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                musicBtn.innerText = "🔊";
-            } else {
-                music.pause();
-                musicBtn.innerText = "🔇";
-            }
+            if (music.paused) { music.play(); musicBtn.innerText = "🔊"; } 
+            else { music.pause(); musicBtn.innerText = "🔇"; }
         }
 
         function scrollToSection(sectionId, element) {
@@ -177,8 +197,7 @@
             navItems.forEach(item => item.classList.remove('active'));
             element.classList.add('active');
             
-            const target = document.getElementById(sectionId);
-            target.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
