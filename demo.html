@@ -3,167 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan: Ahmad & Rina</title>
+    <title>Undangan Pernikahan: Fulan & Fulannah</title>
     <style>
-        /* CSS UTAMA - DESAIN PREMIUM KHUSUS HP & LAPTOP */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #faf6f0; color: #4a4a4a; margin: 0; padding: 0; text-align: center; }
+        /* CSS UTAMA */
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #faf6f0; color: #4a4a4a; margin: 0; padding: 0; text-align: center; overflow: hidden; }
         .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; position: relative; padding-bottom: 60px; }
         
-        /* COVER / BAGIAN ATAS */
-        .cover { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos') no-repeat center/cover; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px; box-sizing: border-box; }
-        .cover h3 { font-size: 16px; text-transform: uppercase; tracking: 2px; margin-bottom: 10px; font-weight: 400; }
-        .cover h1 { font-size: 42px; font-family: 'Georgia', serif; margin: 10px 0; }
-        .cover p { font-size: 14px; opacity: 0.9; }
+        /* 1. HALAMAN COVER (SAMPUL AWAL) */
+        .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 80px; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
+        .cover-box { background: rgba(0, 0, 0, 0.6); padding: 30px 20px; border-radius: 15px; width: 80%; backdrop-filter: blur(5px); color: white; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .cover-box h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-weight: 400; }
+        .cover-box h1 { font-size: 32px; font-family: 'Georgia', serif; margin: 10px 0; }
+        .cover-box .line { height: 1px; background: rgba(255,255,255,0.3); margin: 15px 0; }
+        .tamu-info { display: flex; justify-content: space-between; text-align: left; font-size: 13px; }
         
-        /* SEKSI ISI */
+        /* TOMBOL BUKA UNDANGAN FLOATING DI BAWAH */
+        .btn-buka-container { width: 100%; max-width: 450px; background: white; padding: 15px 0; position: absolute; bottom: 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+        .btn-buka { background: #ffffff; color: #333333; border: 1px solid #cccccc; padding: 12px 40px; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: 0.2s; text-decoration: none; }
+        .btn-buka:hover { background: #f5f5f5; }
+
+        /* CONTENT UTAMA (TERSEMBUNYI DI AWAL) */
+        .main-content { display: none; }
         section { padding: 40px 20px; border-bottom: 1px dashed #e0d5c1; }
         h2 { font-size: 24px; font-family: 'Georgia', serif; color: #c49a45; margin-bottom: 20px; }
-        
-        /* MEMPELAI */
         .mempelai-box { margin: 30px 0; }
-        .mempelai-nama { font-size: 22px; font-weight: bold; color: #333; margin: 5px 0; }
+        .mempelai-nama { font-size: 22px; font-weight: bold; color: #333; }
         .mempelai-ortu { font-size: 13px; color: #777; font-style: italic; }
         .ampersand { font-size: 32px; color: #c49a45; font-family: 'Georgia', serif; margin: 15px 0; }
         
-        /* COUNTDOWN / HITUNG MUNDUR */
-        .countdown { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-        .cd-item { background: #c49a45; color: white; padding: 10px; border-radius: 8px; min-width: 60px; font-weight: bold; }
-        .cd-item span { display: block; font-size: 11px; font-weight: normal; opacity: 0.8; text-transform: uppercase; }
-
-        /* KARTU ACARA */
-        .card-acara { background: #fdfbf7; border: 1px solid #e0d5c1; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-        .btn-maps { display: inline-block; background: #c49a45; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 15px; }
-        
-        /* GALERI FOTO */
-        .galeri { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
-        .galeri img { width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-        /* AMPLOP DIGITAL */
-        .btn-salin { background: #333; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 5px; }
-
         /* TOMBOL MUSIK FLOATING */
-        .music-btn { position: fixed; bottom: 20px; right: 20px; background: #c49a45; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; }
+        .music-btn { position: fixed; bottom: 20px; right: 20px; background: #c49a45; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; display: none; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <!-- 1. COVER -->
-        <div class="cover">
-            <h3>The Wedding of</h3>
-            <h1>Ahmad & Rina</h1>
-            <p>Kamis, 18 Juni 2026</p>
+    <!-- 1. HALAMAN COVER (SAMPUL DEPAN) -->
+    <div class="cover-overlay" id="coverPage">
+        <div class="cover-box">
+            <h3>The Wedding Of</h3>
+            <h1>Fulan & Fulannah</h1>
+            <div class="line"></div>
+            <div class="tamu-info">
+                <div>Kepada Yth.<br><strong>Bpk/Ibu/Saudara/i</strong></div>
+                <div style="text-align: right;">Tamu Undangan<br><strong>di Tempat</strong></div>
+            </div>
         </div>
+        <div class="btn-buka-container">
+            <button class="btn-buka" onclick="bukaUndangan()">📩 Buka Undangan</button>
+        </div>
+    </div>
 
-        <!-- TOMBOL MUSIK LATAR -->
-        <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
-        <audio id="bgMusic" loop>
-            <source src="https://soundhelix.com" type="audio/mpeg">
-        </audio>
+    <!-- ELEMEN MUSIK -->
+    <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="https://soundhelix.com" type="audio/mpeg">
+    </audio>
 
-        <!-- 2. SALAM & MEMPELAI -->
-        <section>
+    <!-- 2. ISI UTAMA UNDANGAN (MUNCUL SETELAH DIKLIK) -->
+    <div class="container main-content" id="mainContent">
+        <section style="padding-top: 60px;">
             <h2>Selamat Datang</h2>
             <p style="font-size: 14px; line-height: 1.6;">Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i ke acara pernikahan kami:</p>
             
             <div class="mempelai-box">
-                <div class="mempelai-nama">Ahmad Wijaya, S.T.</div>
-                <div class="mempelai-ortu">Putra dari Bpk. Budi & Ibu Siti</div>
+                <div class="mempelai-nama">Fulan, S.T.</div>
+                <div class="mempelai-ortu">Putra dari Bpk. A & Ibu B</div>
             </div>
             
             <div class="ampersand">&</div>
             
             <div class="mempelai-box">
-                <div class="mempelai-nama">Rina Amalia, S.E.</div>
-                <div class="mempelai-ortu">Putri dari Bpk. Joko & Ibu Aminah</div>
+                <div class="mempelai-nama">Fulannah, S.E.</div>
+                <div class="mempelai-ortu">Putri dari Bpk. C & Ibu D</div>
             </div>
         </section>
 
-        <!-- 3. HITUNG MUNDUR -->
-        <section>
-            <h2>Menuju Acara</h2>
-            <div class="countdown">
-                <div class="cd-item" id="days">00 <span>Hari</span></div>
-                <div class="cd-item" id="hours">00 <span>Jam</span></div>
-                <div class="cd-item" id="mins">00 <span>Menit</span></div>
-                <div class="cd-item" id="secs">00 <span>Detik</span></div>
-            </div>
-        </section>
-
-        <!-- 4. DETAIL ACARA -->
         <section>
             <h2>Waktu & Tempat</h2>
-            
-            <div class="card-acara">
-                <h3>Akad Nikah</h3>
-                <p>⏰ 08:00 WIB - Selesai</p>
-                <p>📍 Masjid Agung Sejahtera</p>
-            </div>
-
-            <div class="card-acara">
-                <h3>Resepsi</h3>
-                <p>⏰ 11:00 WIB - 16:00 WIB</p>
-                <p>📍 Gedung Serbaguna Utama</p>
-                <p style="font-size: 13px; color:#666;">Jl. Jenderal Sudirman No. 45</p>
-                <a href="https://google.com" target="_blank" class="btn-maps">🗺️ Buka Google Maps</a>
-            </div>
+            <p><strong>Kamis, 18 Juni 2026</strong></p>
+            <p>⏰ 08:00 WIB - Selesai</p>
+            <p>📍 Lokasi Pernikahan Klien Anda</p>
         </section>
-
-        <!-- 5. GALERI FOTO -->
-        <section>
-            <h2>Galeri Bahagia</h2>
-            <div class="galeri">
-                <img src="https://picsum.photos" alt="Foto 1">
-                <img src="https://picsum.photos" alt="Foto 2">
-                <img src="https://picsum.photos" alt="Foto 3">
-                <img src="https://picsum.photos" alt="Foto 4">
-            </div>
-        </section>
-
-        <!-- 6. AMPLOP DIGITAL -->
-        <section>
-            <h2>Amplop Digital</h2>
-            <p style="font-size: 13px; margin-bottom: 20px;">Doa restu Anda adalah berkah, namun jika ingin memberikan tanda kasih secara cashless dapat melalui:</p>
-            <div class="card-acara" style="margin-bottom: 0;">
-                <p><strong>Bank BCA</strong></p>
-                <p id="norek">1234567890</p>
-                <p style="font-size: 13px; color: #666;">a.n Ahmad Wijaya</p>
-                <button class="btn-salin" onclick="salinNorek()">📋 Salin No. Rekening</button>
-            </div>
-        </section>
-
     </div>
 
-    <!-- SCRIPT LOGIKA LIVE -->
+    <!-- SCRIPT LOGIKA KONTROL -->
     <script>
-        // 1. FITUR MUSIK
         const music = document.getElementById("bgMusic");
         const musicBtn = document.getElementById("musicBtn");
+
+        // FUNGSI UTAMA BUKA UNDANGAN
+        function bukaUndangan() {
+            // 1. Geser cover ke atas dan hilangkan
+            const cover = document.getElementById("coverPage");
+            cover.style.transform = "translateY(-100vh)";
+            
+            // 2. Munculkan konten utama & tombol musik
+            document.getElementById("mainContent").style.display = "block";
+            musicBtn.style.display = "block";
+            
+            // 3. Aktifkan scroll halaman kembali
+            document.body.style.overflow = "auto";
+            
+            // 4. Putar musik otomatis secara legal setelah interaksi user
+            music.play();
+            musicBtn.innerText = "⏸️";
+        }
+
+        // FUNGSI TOMBOL MUSIK
         function toggleMusic() {
             if (music.paused) { music.play(); musicBtn.innerText = "⏸️"; } 
             else { music.pause(); musicBtn.innerText = "🎵"; }
         }
-
-        // 2. FITUR SALIN NOREK
-        function salinNorek() {
-            const norek = document.getElementById("norek").innerText;
-            navigator.clipboard.writeText(norek);
-            alert("Nomor rekening berhasil disalin!");
-        }
-
-        // 3. FITUR COUNTDOWN (Set ke target tanggal Juni 2026)
-        const targetDate = new Date("Jun 18, 2026 08:00:00").getTime();
-        setInterval(function() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-            if (diff > 0) {
-                document.getElementById("days").innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24)) + " <span>Hari</span>";
-                document.getElementById("hours").innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + " <span>Jam</span>";
-                document.getElementById("mins").innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)) + " <span>Menit</span>";
-                document.getElementById("secs").innerHTML = Math.floor((diff % (1000 * 60)) / 1000) + " <span>Detik</span>";
-            }
-        }, 1000);
     </script>
 </body>
 </html>
