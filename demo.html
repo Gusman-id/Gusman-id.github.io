@@ -6,8 +6,8 @@
     <title>Undangan Pernikahan: Fulan & Fulannah</title>
     <style>
         /* CSS UTAMA & RESET */
-        html { scroll-behavior: smooth; } /* Efek scroll halus saat menu diklik */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #faf6f0; color: #4a4a4a; margin: 0; padding: 0; text-align: center; overflow: hidden; } /* Terkunci di awal untuk cover */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #faf6f0; color: #4a4a4a; margin: 0; padding: 0; text-align: center; overflow: hidden; }
         
         .container { max-width: 450px; background: #ffffff; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); min-height: 100vh; position: relative; padding-bottom: 80px; box-sizing: border-box; }
         
@@ -23,31 +23,26 @@
         .btn-buka-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; padding: 18px 0; border-top: 1px solid #e5e7eb; box-sizing: border-box; display: flex; justify-content: center; align-items: center; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
         .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #111111; border: none; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; width: 100%; }
 
-        /* 2. CONTENT UTAMA (TERSEMBUNYI DI AWAL) */
+        /* 2. CONTENT UTAMA */
         .main-content { display: none; }
-        
-        /* SEKSI HALAMAN MEMANJANG KE BAWAH */
         .page-section { padding: 80px 25px 60px 25px; box-sizing: border-box; border-bottom: 1px dashed #e0d5c1; position: relative; }
         
-        /* BACKGROUND UNTUK HOME UTAMA */
-        #home { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; color: white; height: 100vh; height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        #home { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover; height: 100vh; height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
         #home h1 { font-family: 'Georgia', serif; font-size: 40px; margin: 10px 0; font-style: italic; }
-        
-        /* BINGKAI EMAS KHUSUS PADA HALAMAN HOME UTAMA */
         .border-frame { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 1px solid rgba(196, 154, 69, 0.5); pointer-events: none; }
         
-        h2 { font-size: 26px; font-family: 'Georgia', serif; color: #c49a45; margin-bottom: 25px; margin-top: 0; }
+        h2 { font-size: 26px; font-family: 'Georgia', serif; color: #c49a45; margin-bottom: 25px; mt: 0; }
         .mempelai-box { margin: 30px 0; }
         .mempelai-nama { font-size: 24px; font-weight: bold; color: #333; margin-bottom: 5px; }
         
-        /* 3. MENU NAVIGASI BAWAH MATANG (BOTTOM NAVBAR FIXED) */
+        /* 3. MENU NAVIGASI BAWAH */
         .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; background: #2c1d11; border-top: 3px solid #c49a45; border-radius: 20px 20px 0 0; display: flex; justify-content: space-around; padding: 10px 0; padding-bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.3); }
         .nav-item { background: none; border: none; color: #a88a64; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; text-decoration: none; transition: 0.2s; }
         .nav-item .icon { font-size: 18px; }
         .nav-item.active { color: #ffffff; font-weight: bold; }
 
-        /* 4. TOMBOL MUSIK FLOATING DI ATAS MENU */
-        .music-btn { position: fixed; bottom: 95px; right: 20px; background: rgba(44, 29, 17, 0.85); border: 1px solid #c49a45; color: #c49a45; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+        /* 4. TOMBOL MUSIK FLOATING */
+        .music-btn { position: fixed; bottom: 95px; right: 20px; background: rgba(44, 29, 17, 0.9); border: 1px solid #c49a45; color: #c49a45; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
     </style>
 </head>
 <body>
@@ -68,16 +63,15 @@
         </div>
     </div>
 
-    <!-- ELEMEN KONTROL MUSIK -->
+    <!-- ELEMEN AUDIO DENGAN TAUTAN SECURE HTTPS PERNIKAHAN -->
     <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔊</button>
-    <audio id="bgMusic" loop>
-        <source src="https://soundhelix.com" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://mixkit.co" type="audio/mpeg">
     </audio>
 
-    <!-- 2. KONTEN UTAMA UNDANGAN (MEMANJANG KE BAWAH) -->
+    <!-- 2. KONTEN UTAMA UNDANGAN -->
     <div class="container main-content" id="mainContent">
 
-        <!-- SEKSI 1: HOME -->
         <div id="home-sec" class="page-section" style="padding: 0;">
             <div id="home">
                 <div class="border-frame"></div>
@@ -87,7 +81,6 @@
             </div>
         </div>
 
-        <!-- SEKSI 2: PROFIL -->
         <div id="profil-sec" class="page-section">
             <h2>Mempelai Pernikahan</h2>
             <div class="mempelai-box">
@@ -101,37 +94,29 @@
             </div>
         </div>
 
-        <!-- SEKSI 3: ACARA -->
         <div id="acara-sec" class="page-section">
             <h2>Agenda Acara</h2>
             <p><strong>Kamis, 18 Juni 2026</strong></p>
             <p style="font-size: 15px;">⏰ 08:00 WIB - Selesai</p>
             <p style="font-size: 15px;">📍 Gedung Pertemuan Mulia</p>
-            <p style="font-size: 13px; color: #777;">Jl. Pahlawan No. 123, Kota Anda</p>
         </div>
 
-        <!-- SEKSI 4: GALERI -->
         <div id="galeri-sec" class="page-section">
             <h2>Galeri Foto</h2>
-            <p style="color: #666; font-size: 14px; margin-bottom: 30px;">Dokumentasi momen kebahagiaan kami.</p>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
                 <img src="https://picsum.photos" style="width: 100%; border-radius: 8px;">
                 <img src="https://picsum.photos" style="width: 100%; border-radius: 8px;">
-                <img src="https://picsum.photos" style="width: 100%; border-radius: 8px;">
-                <img src="https://picsum.photos" style="width: 100%; border-radius: 8px;">
             </div>
         </div>
 
-        <!-- SEKSI 5: UCAPAN -->
         <div id="ucapan-sec" class="page-section">
             <h2>Buku Tamu & Ucapan</h2>
-            <p style="color: #666; font-size: 14px;">Kirimkan doa restu Anda kepada kedua mempelai.</p>
-            <div style="background: #fdfbf7; border: 1px dashed #c49a45; padding: 30px 20px; border-radius: 8px; margin-top: 20px; color: #999; font-size: 14px;">
-                [ Area Kolom Komentar / Ucapan ]
+            <div style="background: #fdfbf7; border: 1px dashed #c49a45; padding: 30px 20px; border-radius: 8px; color: #999; font-size: 14px;">
+                [ Area Kolom Komentar ]
             </div>
         </div>
 
-        <!-- MENU NAVIGASI BAWAH (SISTEM SCROLL JUMP) -->
+        <!-- MENU NAVIGASI BAWAH -->
         <nav class="bottom-nav">
             <button class="nav-item active" onclick="scrollToSection('home-sec', this)">
                 <span class="icon">🏠</span><span>Home</span>
@@ -151,43 +136,47 @@
         </nav>
     </div>
 
-    <!-- SCRIPT SISTEM KONTROL SCROLL & AUDIO -->
+    <!-- SCRIPT LOGIKA PERBAIKAN AUDIO -->
     <script>
         const music = document.getElementById("bgMusic");
         const musicBtn = document.getElementById("musicBtn");
 
-        // 1. FUNGSI UTAMA BUKA UNDANGAN
         function bukaUndangan() {
-            // Geser cover keluar layar ke atas
             document.getElementById("coverPage").style.transform = "translateY(-100dvh)";
-            
-            // Tampilkan isi dan aktifkan fungsi scroll browser secara global
             document.getElementById("mainContent").style.display = "block";
             musicBtn.style.display = "flex";
-            
-            // PERBAIKAN UTAMA: Mengaktifkan scroll pada body secara penuh
             document.body.style.overflow = "auto";
             document.body.style.overflowX = "hidden";
             
-            // Putar musik otomatis
-            music.play();
-            musicBtn.innerText = "🔊";
+            // Perbaikan Force Play: Memastikan audio terpicu langsung pasca klik
+            music.muted = false;
+            let playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    musicBtn.innerText = "🔊";
+                }).catch(error => {
+                    console.log("Autoplay diblokir browser, menunggu interaksi tombol musik.");
+                    musicBtn.innerText = "🔇";
+                });
+            }
         }
 
-        // 2. FUNGSI TOMBOL MUSIK
         function toggleMusic() {
-            if (music.paused) { music.play(); musicBtn.innerText = "🔊"; } 
-            else { music.pause(); musicBtn.innerText = "🔇"; }
+            if (music.paused) {
+                music.play();
+                musicBtn.innerText = "🔊";
+            } else {
+                music.pause();
+                musicBtn.innerText = "🔇";
+            }
         }
 
-        // 3. FUNGSI JUMP/SCROLL KE SEKSI YANG DIKLIK
         function scrollToSection(sectionId, element) {
-            // Pindahkan tanda kuning aktif ke menu yang diklik
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
             element.classList.add('active');
             
-            // Scroll layar otomatis menuju target ID seksi halaman tersebut
             const target = document.getElementById(sectionId);
             target.scrollIntoView({ behavior: 'smooth' });
         }
