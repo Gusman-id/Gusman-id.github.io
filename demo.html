@@ -4,67 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan Tema Jawa-01</title>
+    <!-- MENYAMAKAN IKON PROFESIONAL MENGGUNAKAN FONTAWESOME -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* CSS RESET & CORE FORMATTING */
+        /* CSS RESET & INTI */
         html { scroll-behavior: smooth; }
         body { font-family: 'Times New Roman', Times, Georgia, serif; background-color: #1f140b; color: #f5eedc; margin: 0; padding: 0; text-align: center; overflow: hidden; }
         
         .container { max-width: 450px; background: #2c1d11; margin: 0 auto; box-shadow: 0 0 30px rgba(0,0,0,0.7); min-height: 100vh; position: relative; padding-bottom: 90px; box-sizing: border-box; }
         
-        /* 1. HALAMAN COVER (SAMPUL DEPAN) */
+        /* 1. HALAMAN COVER DEPAN */
         .cover-overlay { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; height: 100vh; height: 100dvh; background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://picsum.photos') no-repeat center/cover; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-sizing: border-box; transition: transform 0.8s ease-in-out; }
         
-        /* KOTAK DEKORATIF JAWA TRANSPARAN */
         .cover-box { background: rgba(27, 18, 10, 0.85); padding: 30px 20px; border-radius: 4px; width: 85%; backdrop-filter: blur(5px); color: #f5eedc; border: 1px solid rgba(196, 154, 69, 0.4); box-sizing: border-box; margin-bottom: 110px; text-align: left; position: relative; }
         .cover-box h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 10px 0; font-weight: normal; color: #c49a45; text-align: center; font-family: 'Segoe UI', Arial, sans-serif; }
-        .cover-box h1 { font-size: 34px; font-weight: normal; margin: 15px 0; text-align: center; font-style: italic; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .cover-box h1 { font-size: 34px; font-weight: normal; margin: 15px 0; text-align: center; font-style: italic; color: #ffffff; }
         .cover-box .line { height: 1px; background: linear-gradient(to right, transparent, #c49a45, transparent); margin: 20px 0; }
         .tamu-info { display: flex; justify-content: space-between; font-size: 13px; line-height: 1.6; font-family: 'Segoe UI', Arial, sans-serif; }
         
-        /* BAR TOMBOL BUKA UNDANGAN (MELEKAT DI BAWAH LAYAR) */
+        /* BAR PUTIH DIBAWAH LAYAR */
         .btn-buka-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; padding: 18px 0; border-top: 1px solid #c49a45; box-sizing: border-box; display: flex; justify-content: center; align-items: center; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
         .btn-buka { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: #111111; border: none; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; width: 100%; letter-spacing: 1px; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        /* 2. CONTENT UTAMA UNDANGAN */
+        /* 2. ISI UNDANGAN UTAMA */
         .main-content { display: none; }
-        
-        /* SEKSI HALAMAN BERUNTUN KE BAWAH */
         .page-section { padding: 80px 25px 60px 25px; box-sizing: border-box; border-bottom: 1px dashed rgba(196, 154, 69, 0.3); position: relative; }
         
-        /* HALAMAN UTAMA (HERO SECTION KHUSUS) */
-        #home-sec-wrapper { background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://picsum.photos') no-repeat center/cover; height: 100vh; height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
-        #home-sec-wrapper h1 { font-size: 44px; margin: 15px 0; font-style: italic; font-weight: normal; color: #ffffff; }
+        /* HOME UTAMA DENGAN FRAME CANTIK SANGMEMPELAI */
+        #home-sec-wrapper { background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://picsum.photos') no-repeat center/cover; height: 100vh; height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; position: relative; }
+        #home-sec-wrapper h1 { font-size: 44px; margin: 15px 0; font-style: italic; font-weight: normal; color: #ffffff; font-family: 'Georgia', serif; }
+        #home-sec-wrapper p { font-family: 'Georgia', serif; margin: 5px 0; }
         
-        /* STRUKTUR ORNAMEN BINGKAI GARIS EMAS KHUSUS TEMA JAWA */
-        .border-frame { position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 1px solid rgba(196, 154, 69, 0.5); pointer-events: none; }
-        .corner-decor { position: absolute; width: 15px; height: 15px; border: 2px solid #c49a45; pointer-events: none; }
-        .top-left { top: 15px; left: 15px; border-right: none; border-bottom: none; }
-        .top-right { top: 15px; right: 15px; border-left: none; border-bottom: none; }
-        .bottom-left { bottom: 15px; left: 15px; border-right: none; border-top: none; }
-        .bottom-right { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+        /* STRUKTUR GARIS DAN SUDUT ART-DECO EMAS */
+        .border-frame { position: absolute; top: 25px; left: 25px; right: 25px; bottom: 25px; border: 1px solid rgba(196, 154, 69, 0.4); pointer-events: none; }
+        
+        /* ORNAMEN POJOK ELEGAN */
+        .corner-line { position: absolute; width: 25px; height: 25px; border: 1px solid #c49a45; pointer-events: none; }
+        .cl-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .cl-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+        .cl-bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .cl-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
         h2 { font-size: 28px; font-weight: normal; color: #c49a45; margin-bottom: 30px; margin-top: 0; font-style: italic; }
         .mempelai-box { margin: 35px 0; }
-        .mempelai-nama { font-size: 26px; font-weight: bold; color: #ffffff; margin-bottom: 5px; }
-        
-        /* 3. BOTTOM NAVIGATION BAR (COKELAT EMAS MATTE) */
-        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; background: #1b120a; border-top: 2px solid #c49a45; border-radius: 16px 16px 0 0; display: flex; justify-content: space-around; padding: 12px 0; padding-bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 999; box-shadow: 0 -8px 20px rgba(0,0,0,0.5); }
-        .nav-item { background: none; border: none; color: #a88a64; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; flex: 1; text-decoration: none; font-family: 'Segoe UI', Arial, sans-serif; transition: 0.2s; }
-        .nav-item .icon { font-size: 16px; margin-bottom: 2px; }
-        .nav-item.active { color: #ffffff; font-weight: bold; }
+        .mempelai-nama { font-size: 28px; font-weight: normal; color: #ffffff; margin-bottom: 5px; font-style: italic; }
 
-        /* 4. FLOATING AUDIO CONTROL BUTTON */
-        .music-btn { position: fixed; bottom: 100px; right: 20px; background: rgba(27, 18, 10, 0.9); border: 1px solid #c49a45; color: #c49a45; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+        /* 3. REPLIKA TOMBOL MELAYANG VERTIKAL (KANAN BAWAH) [1] */
+        .floating-controls { position: fixed; bottom: 105px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; display: none; }
+        .f-btn { background: rgba(44, 29, 17, 0.85); border: 1px solid rgba(196, 154, 69, 0.6); color: #c49a45; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: 0.2s; }
+        .f-btn:hover { background: #2c1d11; color: #ffffff; }
+
+        /* 4. BOTTOM MENU NAVIGASI COKELAT EMAS BULAT */
+        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 450px; background: #24170d; border-top: 2px solid #c49a45; border-radius: 24px 24px 0 0; display: flex; justify-content: space-around; padding: 12px 0; padding-bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 999; box-shadow: 0 -8px 25px rgba(0,0,0,0.6); }
+        .nav-item { background: none; border: none; color: #a88a64; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; flex: 1; text-decoration: none; font-family: 'Segoe UI', Arial, sans-serif; }
+        .nav-item i { font-size: 16px; }
+        .nav-item.active { color: #ffffff; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <!-- 1. SAKELAR COVER DEPAN -->
+    <!-- 1. HALAMAN COVER DEPAN -->
     <div class="cover-overlay" id="coverPage">
         <div class="cover-box">
-            <!-- Ornamen Bingkai Kotak -->
-            <div class="corner-decor top-left"></div><div class="corner-decor top-right"></div>
-            <div class="corner-decor bottom-left"></div><div class="corner-decor bottom-right"></div>
+            <div class="corner-line cl-tl"></div><div class="corner-line cl-tr"></div>
+            <div class="corner-line cl-bl"></div><div class="corner-line cl-br"></div>
             
             <h3>The Wedding Of</h3>
             <h1>Fulan & Fulannah</h1>
@@ -74,33 +77,42 @@
                 <div style="text-align: right;">Tamu Undangan<br><strong>di Tempat</strong></div>
             </div>
         </div>
-        
-        <!-- BAR PUTIH BAWAH SANG MEMPELAI STYLE -->
         <div class="btn-buka-bar">
             <button class="btn-buka" onclick="bukaUndangan()">📩 Buka Undangan</button>
         </div>
     </div>
 
-    <!-- ELEMEN SISTEM MUSIK (LOKAL REPOSITORY) -->
-    <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔊</button>
+    <!-- 2. REPLIKA PANEL FLOATING ACTION BUTTONS (KANAN BAWAH) [1] -->
+    <div class="floating-controls" id="floatingControls">
+        <!-- Tombol Audio Musik Kontrol -->
+        <button class="f-btn" onclick="toggleMusic()" id="musicBtn"><i class="fas fa-volume-up"></i></button>
+        <!-- Tombol QR Code Tambahan Sesuai Gambar -->
+        <button class="f-btn" onclick="alert('Fitur QR Code Amplop Digital Terbuka!')"><i class="fas fa-qrcode"></i></button>
+    </div>
+
+    <!-- ELEMEN MUSIK REPOSITORY LOKAL -->
     <audio id="bgMusic" loop preload="auto">
         <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 2. PANIL UTAMA UNDANGAN (SCROLLABLE) -->
+    <!-- 3. KONTEN MEMANJANG UTAMA -->
     <div class="container main-content" id="mainContent">
 
-        <!-- NAV 1: HOME SECTION -->
+        <!-- NAV 1: HOME -->
         <div id="home-sec" class="page-section" style="padding: 0;">
             <div id="home-sec-wrapper">
+                <!-- Garis Frame dan Sudut Hiasan -->
                 <div class="border-frame"></div>
-                <p style="letter-spacing: 3px; font-size: 12px; text-transform: uppercase; margin: 0; color: #c49a45; font-family: 'Segoe UI';">The Wedding Of</p>
+                <div class="corner-line cl-tl"></div><div class="corner-line cl-tr"></div>
+                <div class="corner-line cl-bl"></div><div class="corner-line cl-br"></div>
+                
+                <p style="letter-spacing: 3px; font-size: 13px; text-transform: uppercase; margin: 0; color: #c49a45; font-family: 'Segoe UI';">The Wedding Of</p>
                 <h1>Fulan & Fulannah</h1>
-                <p style="font-size: 16px; font-style: italic; color: #f5eedc;">Kamis, 18 Juni 2026</p>
+                <p style="font-size: 16px; color: #f5eedc;">Kamis, 18 Juni 2026</p>
             </div>
         </div>
 
-        <!-- NAV 2: PROFIL SECTION -->
+        <!-- NAV 2: PROFIL -->
         <div id="profil-sec" class="page-section">
             <h2>Mempelai Pernikahan</h2>
             <div class="mempelai-box">
@@ -114,7 +126,7 @@
             </div>
         </div>
 
-        <!-- NAV 3: ACARA SECTION -->
+        <!-- NAV 3: ACARA -->
         <div id="acara-sec" class="page-section">
             <h2>Agenda Acara</h2>
             <p style="font-size: 18px; color: #ffffff;"><strong>Kamis, 18 Juni 2026</strong></p>
@@ -122,7 +134,7 @@
             <p style="font-size: 15px; font-family: 'Segoe UI';">📍 Gedung Pertemuan Mulia</p>
         </div>
 
-        <!-- NAV 4: GALERI SECTION -->
+        <!-- NAV 4: GALERI -->
         <div id="galeri-sec" class="page-section">
             <h2>Galeri Foto</h2>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
@@ -131,7 +143,7 @@
             </div>
         </div>
 
-        <!-- NAV 5: UCAPAN SECTION -->
+        <!-- NAV 5: UCAPAN -->
         <div id="ucapan-sec" class="page-section">
             <h2>Buku Tamu & Ucapan</h2>
             <div style="background: rgba(27,18,10,0.5); border: 1px dashed #c49a45; padding: 30px 20px; border-radius: 4px; color: #a88a64; font-size: 14px; font-family: 'Segoe UI';">
@@ -139,57 +151,62 @@
             </div>
         </div>
 
-        <!-- BOTTOM NAV BAR COKELAT EMAS JAWA -->
+        <!-- BOTTOM MENU REPLIKA TARGET (IKON ATAS TEKS BAWAH) -->
         <nav class="bottom-nav">
             <button class="nav-item active" onclick="scrollToSection('home-sec', this)">
-                <span class="icon">🏠</span><span>Home</span>
+                <i class="fas fa-home"></i><span>Home</span>
             </button>
             <button class="nav-item" onclick="scrollToSection('profil-sec', this)">
-                <span class="icon">❤️</span><span>Profil</span>
+                <i class="fas fa-heart"></i><span>Profil</span>
             </button>
             <button class="nav-item" onclick="scrollToSection('acara-sec', this)">
-                <span class="icon">📅</span><span>Acara</span>
+                <i class="fas fa-calendar-alt"></i><span>Acara</span>
             </button>
             <button class="nav-item" onclick="scrollToSection('galeri-sec', this)">
-                <span class="icon">🖼️</span><span>Galeri</span>
+                <i class="fas fa-images"></i><span>Galeri</span>
             </button>
             <button class="nav-item" onclick="scrollToSection('ucapan-sec', this)">
-                <span class="icon">💬</span><span>Ucapan</span>
+                <i class="fas fa-comments"></i><span>Ucapan</span>
             </button>
         </nav>
     </div>
 
-    <!-- LOGIKA SISTEM JAVASCRIPT -->
+    <!-- LOGIKA SISTEM REPLIKA -->
     <script>
         const music = document.getElementById("bgMusic");
         const musicBtn = document.getElementById("musicBtn");
+        const floatingControls = document.getElementById("floatingControls");
 
         function bukaUndangan() {
             document.getElementById("coverPage").style.transform = "translateY(-100dvh)";
             document.getElementById("mainContent").style.display = "block";
-            musicBtn.style.display = "flex";
+            // Munculkan tumpukan tombol melayang kanan bawah [1]
+            floatingControls.style.display = "flex"; 
             
-            // Lepas kunci scroll untuk pergerakan memanjang bebas ke bawah
             document.body.style.overflow = "auto";
             document.body.style.overflowX = "hidden";
             
-            // Pemicu putar musik dari folder lokal repository GitHub Anda
+            // Putar audio lokal
             music.muted = false;
             let playPromise = music.play();
             
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
-                    musicBtn.innerText = "🔊";
+                    musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
                 }).catch(e => {
-                    console.log("Autoplay ditahan browser.");
-                    musicBtn.innerText = "🔇";
+                    musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
                 });
             }
         }
 
         function toggleMusic() {
-            if (music.paused) { music.play(); musicBtn.innerText = "🔊"; } 
-            else { music.pause(); musicBtn.innerText = "🔇"; }
+            if (music.paused) { 
+                music.play(); 
+                musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>'; 
+            } else { 
+                music.pause(); 
+                musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i>'; 
+            }
         }
 
         function scrollToSection(sectionId, element) {
